@@ -1,4 +1,6 @@
 /* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 body, input, button {
   font-family: 'Poppins', sans-serif;
 }
@@ -6,21 +8,21 @@ body, input, button {
 body {
   background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
   margin: 0;
-  padding: 20px;
+  padding: 40px 20px;
   min-height: 100vh;
   color: #444;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   transition: background 0.5s ease;
 }
 
 .app-container {
   background-color: white;
-  max-width: 700px;
+  max-width: 900px;
   width: 100%;
   border-radius: 15px;
-  padding: 30px 40px;
+  padding: 40px 400px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   transition: box-shadow 0.3s ease;
 }
@@ -34,26 +36,26 @@ body {
   font-weight: 600;
   font-size: 2.5rem;
   color: #2c3e50;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   letter-spacing: 1.2px;
   user-select: none;
 }
 
 .balance-section {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .balance-section h4 {
   font-weight: 600;
   color: #7f8c8d;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   letter-spacing: 0.05em;
   user-select: none;
 }
 
 #balance {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
   color: #27ae60;
   text-shadow: 0 2px 5px rgba(39, 174, 96, 0.4);
@@ -64,21 +66,21 @@ body {
 .inc-exp-container {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 40px;
-  flex-wrap: wrap;
 }
 
 .box {
-  flex: 1 1 30%;
+  flex: 1;
   background: #f7f9fa;
   border-radius: 12px;
-  padding: 20px 25px;
+  padding: 25px;
   text-align: center;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
   cursor: default;
   user-select: none;
+  min-width: 180px;
 }
 
 .box:hover {
@@ -88,13 +90,13 @@ body {
 
 .box h4 {
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: #34495e;
   letter-spacing: 0.04em;
 }
 
 .money {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   transition: color 0.3s ease;
@@ -112,20 +114,19 @@ body {
   color: #2980b9;
 }
 
-.transaction-history-container {
-  display: flex;
-  gap: 25px;
+.transaction-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
   margin-bottom: 40px;
-  max-height: 300px;
-  flex-wrap: wrap;
 }
 
 .transaction-box {
-  flex: 1 1 45%;
   background: #fafafa;
   border-radius: 12px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  padding: 20px 15px;
+  padding: 25px;
+  height: 300px;
   overflow-y: auto;
   transition: box-shadow 0.3s ease;
 }
@@ -135,12 +136,17 @@ body {
 }
 
 .transaction-box h3 {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: #34495e;
   font-weight: 600;
   border-bottom: 2px solid #2980b9;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   user-select: none;
+  position: sticky;
+  top: 0;
+  background: #fafafa;
+  z-index: 1;
+  padding-top: 5px;
 }
 
 .list {
@@ -195,11 +201,19 @@ body {
   box-shadow: 0 2px 5px rgba(231, 76, 60, 0.5);
   transition: background 0.2s ease, transform 0.2s ease;
   user-select: none;
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 
 .delete-btn:hover {
   background: #c0392b;
   transform: scale(1.1);
+}
+
+.form-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
 .form-control {
@@ -254,8 +268,22 @@ input[type='number']:focus {
 }
 
 /* Responsive Design */
-
 @media (max-width: 768px) {
+  .app-container {
+    padding: 30px;
+  }
+  
+  .transaction-section,
+  .form-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .transaction-box {
+    height: 250px;
+  }
+}
+
+@media (max-width: 600px) {
   .app-container {
     padding: 25px 20px;
   }
@@ -269,18 +297,7 @@ input[type='number']:focus {
   }
 
   .box {
-    flex: 1 1 100%;
     margin-bottom: 20px;
-  }
-
-  .transaction-history-container {
-    flex-direction: column;
-  }
-
-  .transaction-box {
-    flex: 1 1 100%;
-    max-height: 250px;
-    margin-bottom: 25px;
   }
 
   #balance {
